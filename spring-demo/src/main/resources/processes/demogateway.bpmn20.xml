@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef">
+  <process id="demogateway" name="demogateway" isExecutable="true">
+    <startEvent id="start" flowable:formFieldValidation="true"></startEvent>
+    <serviceTask id="Disbursement" name="DIsbursement" flowable:class="com.example.demo.task.Disbursement"></serviceTask>
+    <userTask id="CheckCIC" name="CheckCIC" flowable:candidateGroups="validators" flowable:formFieldValidation="true">
+      <extensionElements>
+        <modeler:group-info-name-validators xmlns:modeler="http://flowable.org/modeler"><![CDATA[validators]]></modeler:group-info-name-validators>
+        <modeler:activiti-idm-candidate-group xmlns:modeler="http://flowable.org/modeler"><![CDATA[true]]></modeler:activiti-idm-candidate-group>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <exclusiveGateway id="sid-3EF61B95-1A23-486C-95BC-28AF91831F6C" default="sid-F51D1EB7-A488-4E29-B27D-1D0DA6920988"></exclusiveGateway>
+    <intermediateThrowEvent id="end" name="end"></intermediateThrowEvent>
+    <sequenceFlow id="isCheckCIC" name="isCheckCIC" sourceRef="sid-3EF61B95-1A23-486C-95BC-28AF91831F6C" targetRef="Disbursement">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${isCheckCIC}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="sid-5AAF67B3-0EC2-49FC-BA1C-A8DFB8D46C8B" sourceRef="start" targetRef="CheckCIC"></sequenceFlow>
+    <sequenceFlow id="sid-F51D1EB7-A488-4E29-B27D-1D0DA6920988" sourceRef="sid-3EF61B95-1A23-486C-95BC-28AF91831F6C" targetRef="end"></sequenceFlow>
+    <sequenceFlow id="sid-1FDE9721-CA3E-4EC0-AB2B-9A613DA46AB1" sourceRef="CheckCIC" targetRef="sid-3EF61B95-1A23-486C-95BC-28AF91831F6C"></sequenceFlow>
+    <sequenceFlow id="sid-23EAF2CC-397E-40C8-AABD-62A9CB1C01FF" sourceRef="Disbursement" targetRef="end"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_demogateway">
+    <bpmndi:BPMNPlane bpmnElement="demogateway" id="BPMNPlane_demogateway">
+      <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Disbursement" id="BPMNShape_Disbursement">
+        <omgdc:Bounds height="80.0" width="100.0" x="525.0" y="138.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="CheckCIC" id="BPMNShape_CheckCIC">
+        <omgdc:Bounds height="80.0" width="100.0" x="175.0" y="138.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-3EF61B95-1A23-486C-95BC-28AF91831F6C" id="BPMNShape_sid-3EF61B95-1A23-486C-95BC-28AF91831F6C">
+        <omgdc:Bounds height="40.0" width="40.0" x="320.0" y="158.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
+        <omgdc:Bounds height="30.0" width="30.0" x="325.0" y="320.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-23EAF2CC-397E-40C8-AABD-62A9CB1C01FF" id="BPMNEdge_sid-23EAF2CC-397E-40C8-AABD-62A9CB1C01FF">
+        <omgdi:waypoint x="525.0" y="211.37085106382986"></omgdi:waypoint>
+        <omgdi:waypoint x="352.4323123667792" y="326.6663793290335"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-F51D1EB7-A488-4E29-B27D-1D0DA6920988" id="BPMNEdge_sid-F51D1EB7-A488-4E29-B27D-1D0DA6920988">
+        <omgdi:waypoint x="340.43910256410254" y="197.50462844330562"></omgdi:waypoint>
+        <omgdi:waypoint x="340.0477633384107" y="320.0000753620086"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="isCheckCIC" id="BPMNEdge_isCheckCIC">
+        <omgdi:waypoint x="359.48642674070464" y="178.4594017094017"></omgdi:waypoint>
+        <omgdi:waypoint x="524.9999999999986" y="178.10650319829423"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-1FDE9721-CA3E-4EC0-AB2B-9A613DA46AB1" id="BPMNEdge_sid-1FDE9721-CA3E-4EC0-AB2B-9A613DA46AB1">
+        <omgdi:waypoint x="274.94999999999806" y="178.21623376623378"></omgdi:waypoint>
+        <omgdi:waypoint x="320.4130434782609" y="178.4130434782609"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5AAF67B3-0EC2-49FC-BA1C-A8DFB8D46C8B" id="BPMNEdge_sid-5AAF67B3-0EC2-49FC-BA1C-A8DFB8D46C8B">
+        <omgdi:waypoint x="129.9499984899576" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="174.9999999999917" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

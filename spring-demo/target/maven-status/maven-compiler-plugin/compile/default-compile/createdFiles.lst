@@ -1,0 +1,13 @@
+com\example\demo\DemoApplication.class
+com\example\demo\service\AuthenService.class
+com\example\demo\model\mapper\UserMapper.class
+com\example\demo\service\impl\AuthenServiceImpl.class
+com\example\demo\model\dto\LoginRes.class
+com\example\demo\repository\UserRepository.class
+com\example\demo\model\dto\RegistCardDto.class
+com\example\demo\model\entity\User.class
+com\example\demo\model\dto\UserDto.class
+com\example\demo\controller\AuthenController.class
+com\example\demo\controller\WorkflowController.class
+com\example\demo\model\dto\BaseResponse.class
+com\example\demo\model\dto\LoginReq.class
